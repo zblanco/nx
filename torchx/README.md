@@ -47,6 +47,7 @@ CUDA versions. The current supported targets are:
 - `cpu` default CPU only version
 - `cu102` CUDA 10.2 and CPU version (no OSX support)
 - `cu111` CUDA 11.1 and CPU version (no OSX support)
+- `rocm5.2` AMD GPU support
 
 Once downloaded, we will compile `Torchx` bindings. You will need `make`/`nmake`,
 `cmake` (3.12+) and a `C++` compiler. If building on Windows, you will need:
