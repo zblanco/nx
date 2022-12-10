@@ -3,10 +3,17 @@ defmodule Torchx.DeviceTest do
 
   alias Torchx.Backend, as: TB
 
-  if Torchx.device_available?(:cuda) do
-    @device {:cuda, 0}
-  else
-    @device :cpu
+  @libtorch_target System.get_env("LIBTORCH_TARGET", "cpu")
+
+  cond do
+    @libtorch_target == "rocm5.2" ->
+      @device :cuda
+
+    Torchx.device_available?(:cuda) ->
+      @device {:cuda, 0}
+
+    true -> 
+      @device :cpu
   end
 
   describe "creation" do
